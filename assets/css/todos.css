@@ -2,7 +2,7 @@ body {
     background: purple;
 }
 
-#container {
+.toDoList {
     background: gray;
     width: 200px;
     margin: 0 auto;
