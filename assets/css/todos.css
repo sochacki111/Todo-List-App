@@ -1,13 +1,59 @@
-body {
-    background: purple;
+h1 {
+    text-align: center;
+    line-height: 1.1;
+    font-weight: normal;
+    color: white;
+    background: steelblue;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.textInput {
+    font-size: 18px;
+    color: steelblue;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 15px 15px 15px;
+}
+
+.textInput:focus {
+    background: white;
+    border: 3px solid steelblue;
+    outline: none;
 }
 
 .todoList {
-    background: gray;
-    width: 200px;
-    margin: 0 auto;
+    background: lightgray;
+    height: 200px;
+    width: 50%;
+    margin: 100px auto;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
+.thingsTodo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.todo {
+    background: white;
+    height: 40px;
+    line-height: 40px;
+}
+
+.todo:nth-child(2n) {
+    background: lightgray;
+}
+]
+
 .done {
+    color: gray;
     text-decoration: line-through; 
+}
+
+
+body {
+    font-family: Roboto;
 }
