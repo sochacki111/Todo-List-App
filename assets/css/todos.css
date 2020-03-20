@@ -13,13 +13,6 @@ body {
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.todoList {
-    width: 50%;
-    margin: 100px auto;
-    background: lightgray;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
 h1 {
     text-align: center;
     line-height: 1.1;
@@ -33,6 +26,13 @@ h1 {
 
 .toggleInputText {
     float: right;
+}
+
+.todoList {
+    width: 50%;
+    margin: 100px auto;
+    background: lightgray;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 .textInput {
@@ -51,8 +51,6 @@ h1 {
     outline: none;
 }
 
-
-
 .thingsTodo {
     list-style: none;
     margin: 0;
@@ -63,6 +61,10 @@ h1 {
     background: white;
     height: 40px;
     line-height: 40px;
+}
+
+.todo:nth-child(2n) {
+    background: lightgray;
 }
 
 .trashCan {
@@ -81,14 +83,7 @@ h1 {
     width: 40px;
     opacity: 1;
 }
-
-.todo:nth-child(2n) {
-    background: lightgray;
-}
-
 .done {
     color: gray;
     text-decoration: line-through;
 }
-
-

@@ -5,13 +5,13 @@ $('.toggleInputText').on('click', function(event) {
 });
 
 // Mark list item as completed
-$('.thingsTodo').on('click', 'li', function(event) {
+$('.thingsTodo').on('click', '.todo', function(event) {
     $(this).toggleClass('done');
     event.stopPropagation();
 });
 
 // Delete list item
-$('.thingsTodo').on('click', 'span', function(event) {
+$('.thingsTodo').on('click', '.trashCan', function(event) {
     $(this)
         .parent()
         .fadeOut(200, function() {
