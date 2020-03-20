@@ -1,3 +1,25 @@
+body {
+    font-family: Roboto;
+    background: #1cd8d2; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to right,
+        #1cd8d2,
+        #93edc7
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #1cd8d2,
+        #93edc7
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.todoList {
+    width: 50%;
+    margin: 100px auto;
+    background: lightgray;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
 h1 {
     text-align: center;
     line-height: 1.1;
@@ -9,12 +31,18 @@ h1 {
     padding: 10px 20px;
 }
 
+.toggleInputText {
+    float: right;
+}
+
 .textInput {
+    background: lightgray;
     font-size: 18px;
     color: steelblue;
     width: 100%;
-    box-sizing: border-box;
     padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
 }
 
 .textInput:focus {
@@ -23,13 +51,7 @@ h1 {
     outline: none;
 }
 
-.todoList {
-    background: lightgray;
-    height: 200px;
-    width: 50%;
-    margin: 100px auto;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-}
+
 
 .thingsTodo {
     list-style: none;
@@ -43,17 +65,30 @@ h1 {
     line-height: 40px;
 }
 
+.trashCan {
+    background: red;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    width: 0;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;
+}
+
+.todo:hover .trashCan {
+    width: 40px;
+    opacity: 1;
+}
+
 .todo:nth-child(2n) {
     background: lightgray;
 }
-]
 
 .done {
     color: gray;
-    text-decoration: line-through; 
+    text-decoration: line-through;
 }
 
 
-body {
-    font-family: Roboto;
-}

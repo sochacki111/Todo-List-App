@@ -1,6 +1,6 @@
-// Toggle showing text input 
+// Toggle showing text input
 $('.toggleInputText').on('click', function(event) {
-    $('.textInput').toggle();
+    $('.textInput').slideToggle('fast');
     event.stopPropagation();
 });
 
@@ -12,17 +12,24 @@ $('.thingsTodo').on('click', 'li', function(event) {
 
 // Delete list item
 $('.thingsTodo').on('click', 'span', function(event) {
-    $(this).parent().fadeOut(200, function() {
-        $(this).remove();
-    });
+    $(this)
+        .parent()
+        .fadeOut(200, function() {
+            $(this).remove();
+        });
     event.stopPropagation();
 });
 
 // Add new list item
 $('.textInput').keypress(function(event) {
+    let toDoItem = $(this).val();
     // If 'enter' is clicked
-    if (event.which === 13) {
-        let toDoItem = $(this).val();
-        $('.thingsTodo').append('<li class="todo"><span>X </span>' + toDoItem + '</li>');
+    if (event.which === 13 && toDoItem !== '') {
+        $('.thingsTodo').append(
+            '<li class="todo"><span class="trashCan"><i class="fa fa-trash"></i></span>' +
+                toDoItem +
+                '</li>'
+        );
+        $(this).val('');
     }
 });

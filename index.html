@@ -5,8 +5,12 @@
         <title>TodoListProject</title>
         <link rel="stylesheet" href="assets/css/todos.css" />
         <link
-            href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
             rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         />
         <script
             type="text/javascript"
@@ -16,12 +20,21 @@
 
     <body>
         <div class="todoList">
-            <h1>TODO LIST<span class="toggleInputText"> +</span></h1>
+            <h1>TODO LIST<i class="toggleInputText fa fa-plus"></i></h1>
             <input class="textInput" type="text" placeholder="Add New Todo" />
             <ul class="thingsTodo">
-                <li class="todo"><span>X </span>Learn js</li>
-                <li class="todo"><span>X </span>Play game</li>
-                <li class="todo"><span>X </span>Visit doctor</li>
+                <li class="todo">
+                    <span class="trashCan"><i class="fa fa-trash"></i></span
+                    >Learn js
+                </li>
+                <li class="todo">
+                    <span class="trashCan"><i class="fa fa-trash"></i></span
+                    >Play game
+                </li>
+                <li class="todo">
+                    <span class="trashCan"><i class="fa fa-trash"></i></span
+                    >Visit doctor
+                </li>
             </ul>
         </div>
         <script src="assets/js/todos.js"></script>
