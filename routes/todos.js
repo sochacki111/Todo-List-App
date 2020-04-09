@@ -3,7 +3,13 @@ const router = express.Router();
 const TodoList = require('../models/todoList');
 
 router.get('/', (req, res) => {
-    res.render('todos/index');
+    TodoList.find({}, (err, todoLists) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('todos/index', { todoLists: todoLists });
+        }
+    });
 });
 
 // POST CREATE
