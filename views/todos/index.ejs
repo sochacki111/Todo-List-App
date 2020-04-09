@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<div class="row">
+    <div style="width: 30%; margin: 30px auto;">
+        <form action="/todos" method="POST">
+            <div class="form-group">
+                <label for="name" class="sr-only">Title</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    name="title"
+                    placeholder="Enter list title..."
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-block btn-success">
+                    Add List
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

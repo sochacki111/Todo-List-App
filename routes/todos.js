@@ -3,7 +3,7 @@ const router = express.Router();
 const TodoList = require('../models/todoList');
 
 router.get('/', (req, res) => {
-    res.send('Todos index page');
+    res.render('todos/index');
 });
 
 // POST CREATE
@@ -29,5 +29,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
     res.render('todos/show');
 });
+
+
 
 module.exports = router;

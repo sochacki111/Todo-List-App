@@ -1,0 +1,10 @@
+body {
+    background-image: url('https://quotefancy.com/media/wallpaper/3840x2160/6360638-Albert-Einstein-Quote-You-never-fail-until-you-stop-trying.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+#landing-header h1 {
+    color: #fff;
+}
