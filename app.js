@@ -11,8 +11,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 // ROUTES
-app.use('/', todoRoutes);
+app.use('/todos', todoRoutes);
 
-app.listen(process.env.PORT, () => {
-    console.log(`TodoList server has started on port ${process.env.PORT}!`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(
+        `TodoList server has started on port ${process.env.PORT || 3000}!`
+    );
 });
