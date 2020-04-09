@@ -8,11 +8,10 @@ router.get('/', (req, res) => {
 
 // POST CREATE
 router.post('/', (req, res) => {
-    let title = req.body.name;
-    let todoEntries = req.body.todoEntries;
+    let title = req.body.title;
 
     let newTodo = {
-        title: name,
+        title: title,
     };
 
     TodoList.create(newTodo, (err, todoList) => {
@@ -29,7 +28,5 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
     res.render('todos/show');
 });
-
-
 
 module.exports = router;
