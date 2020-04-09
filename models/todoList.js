@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 
 const todoListSchema = new mongoose.Schema({
     title: String,
-    todoEntry: String,
+    todoEntries: [
+        {
+            type: String
+        }
+    ],
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
         },
-        username: String
-    }
-
+        username: String,
+    },
 });
 
 const TodoList = mongoose.model('TodoList', todoListSchema);
