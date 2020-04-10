@@ -3,7 +3,25 @@
     <div class="row">
         <% todoLists.forEach(todoList => { %>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card"></div>
+            <div class="card border-dark">
+                <div class="card-header bg-secondary">
+                    <%= todoList.title %>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Entry 1
+                    </li>
+                    <li class="list-group-item">Entry 2</li>
+                    <li class="list-group-item">Entry 3</li>
+                </ul>
+                <form action="todos/addTask" method="POST">
+                    <input
+                        class="textInput"
+                        type="text"
+                        placeholder="Add new list entry..."
+                    />
+                </form>
+            </div>
         </div>
         <% }) %>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
@@ -30,4 +48,5 @@
         </div>
     </div>
 </div>
+<script src="/js/todos.js"></script>
 <%- include('../partials/footer') %>

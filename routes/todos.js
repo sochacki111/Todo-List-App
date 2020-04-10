@@ -31,6 +31,11 @@ router.post('/', (req, res) => {
     res.redirect('/todos');
 });
 
+router.post('/addTask', (req, res) => {
+    console.log('hit the post');
+    res.redirect('/todos');
+});
+
 router.get('/:id', (req, res) => {
     res.render('todos/show');
 });
