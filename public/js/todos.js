@@ -6,6 +6,15 @@
 
 // Mark list item as completed
 $('.list-group').on('click', '.list-group-item', function (event) {
+    // Create fetch patch
+    fetch('/todos/tasks', {
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        method: 'PATCH',
+        body: JSON.stringify({
+            isDone: true,
+        })
+    });
+
     $(this).toggleClass('done');
     event.stopPropagation();
 });

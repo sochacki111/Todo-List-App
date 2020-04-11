@@ -8,6 +8,7 @@ require('dotenv').config();
 
 // REQUIRING ROUTES
 const todoRoutes = require('./routes/todos');
+const taskRoutes = require('./routes/tasks');
 
 mongoose
     .connect(process.env.DATABASEURL, {
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs');
 
 // ROUTES
 app.use('/todos', todoRoutes);
+app.use('/todos/:id/tasks', taskRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(

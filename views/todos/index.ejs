@@ -9,14 +9,17 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <% todoList.todoEntries.forEach(entry => { %>
-                        <li class="list-group-item">
-                            <%= entry %>
-                        </li>
+                        <% if (!entry.isDone) { %>
+                            <li class="list-group-item"><%= entry.text %></li>
+                        <% } else { %>
+                            <li class="list-group-item done"><%= entry.text %></li>
+                        <% } %>
+                        
                     <% }) %>
                 </ul>
 
-                <form class="listEntry" action="todos/addTask" method="POST">
-                    <input name="todoEntry" class="textInput" type="text" placeholder="Add new list entry..."
+                <form class="listEntry" action="todos/tasks" method="POST">
+                    <input name="text" class="textInput" type="text" placeholder="Add new list entry..."
                         required />
                     <input name="todo_id" type="hidden" value="<%= todoList._id %>" />
                 </form>
