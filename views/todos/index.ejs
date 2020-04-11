@@ -8,18 +8,17 @@
                     <%= todoList.title %>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        Entry 1
-                    </li>
-                    <li class="list-group-item">Entry 2</li>
-                    <li class="list-group-item">Entry 3</li>
+                    <% todoList.todoEntries.forEach(entry => { %>
+                        <li class="list-group-item">
+                            <%= entry %>
+                        </li>
+                    <% }) %>
                 </ul>
-                <form action="todos/addTask" method="POST">
-                    <input
-                        class="textInput"
-                        type="text"
-                        placeholder="Add new list entry..."
-                    />
+
+                <form class="listEntry" action="todos/addTask" method="POST">
+                    <input name="todoEntry" class="textInput" type="text" placeholder="Add new list entry..."
+                        required />
+                    <input name="todo_id" type="hidden" value="<%= todoList._id %>" />
                 </form>
             </div>
         </div>
@@ -29,13 +28,8 @@
                 <form action="/todos" method="POST">
                     <div class="form-group">
                         <label for="name" class="sr-only">Title</label>
-                        <input
-                            class="form-control"
-                            type="text"
-                            name="title"
-                            placeholder="Enter list title..."
-                            required
-                        />
+                        <input class="form-control" type="text" name="title" placeholder="Enter list title..."
+                            required />
                     </div>
 
                     <div class="form-group">

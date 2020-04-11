@@ -32,8 +32,18 @@ router.post('/', (req, res) => {
 });
 
 router.post('/addTask', (req, res) => {
-    console.log('hit the post');
-    res.redirect('/todos');
+    TodoList.findById(req.body.todo_id, (err, todoList) => {
+        if (err) {
+            console.log(err);
+            redirect('/todos');
+        } else {
+
+            todoList.todoEntries.push(req.body.todoEntry);
+            todoList.save();
+            res.redirect('/todos');
+        }
+    });
+
 });
 
 router.get('/:id', (req, res) => {
