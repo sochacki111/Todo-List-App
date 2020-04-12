@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 const Todo = require("../models/todo");
 
 exports.todos_get_all = (req, res) => {
-    Todo.find({}, (err, todoLists) => {
+    console.log('todos controller');
+    Todo.find({}, (err, todos) => {
         if (err) {
             console.log(err);
         } else {
-            res.render('todos/index', { todoLists: todoLists });
+            res.render('todos/index', { todos: todos });
         }
     });
 };

@@ -1,27 +1,26 @@
 <%- include('../partials/header') %>
 <div class="container">
     <div class="row">
-        <% todoLists.forEach(todoList => { %>
+        <% todos.forEach(todo => { %>
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card border-dark">
                 <div class="card-header bg-secondary">
-                    <%= todoList.title %>
+                    <%= todo.title %>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <% todoList.todoEntries.forEach(entry => { %>
-                        <% if (!entry.isDone) { %>
-                            <li class="list-group-item"><%= entry.text %></li>
+                <ul class="list-group list-group-flush" data-todo_id="<%= todo._id %>">
+                    <% todo.tasks.forEach(task => { %>
+                        <% if (!task.isDone) { %>
+                            <li class="list-group-item" data-task_id="<%= task._id %>"><%= task.text %></li>
                         <% } else { %>
-                            <li class="list-group-item done"><%= entry.text %></li>
+                            <li class="list-group-item done"><%= task.text %></li>
                         <% } %>
                         
                     <% }) %>
                 </ul>
 
-                <form class="listEntry" action="todos/tasks" method="POST">
-                    <input name="text" class="textInput" type="text" placeholder="Add new list entry..."
+                <form class="listEntry" action="/todos/<%= todo._id %>/tasks" method="POST">
+                    <input name="task[text]" class="textInput" type="text" placeholder="Add new list entry..."
                         required />
-                    <input name="todo_id" type="hidden" value="<%= todoList._id %>" />
                 </form>
             </div>
         </div>
