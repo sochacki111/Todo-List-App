@@ -12,9 +12,8 @@
                         <% if (!task.isDone) { %>
                             <li class="list-group-item" data-task_id="<%= task._id %>"><%= task.text %></li>
                         <% } else { %>
-                            <li class="list-group-item done"><%= task.text %></li>
+                            <li class="list-group-item done" data-task_id="<%= task._id %>"><%= task.text %></li>
                         <% } %>
-                        
                     <% }) %>
                 </ul>
 
