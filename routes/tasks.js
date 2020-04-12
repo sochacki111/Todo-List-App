@@ -4,6 +4,10 @@ const TaskController = require('../controllers/tasks');
 const Todo = require("../models/todo");
 const Task = require("../models/task");
 
+router.get('/', (req, res) => {
+    res.send('hello ' + req.params.todo_id);
+});
+
 // router.post('/', TaskController.tasks_create_task);
 router.post('/', (req, res) => {
     console.log(req.params);
