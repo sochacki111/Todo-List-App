@@ -28,7 +28,6 @@ exports.tasks_create_task = (req, res) => {
 };
 
 exports.tasks_patch_task = (req, res) => {
-    console.log('patch hit');
     Todo.findById(req.params.todo_id, (err, foundTodo) => {
         if (err || !foundTodo) {
             return res.redirect('/todos');
@@ -38,11 +37,9 @@ exports.tasks_patch_task = (req, res) => {
                 if (err) {
                     res.redirect('/todos');
                 } else {
-                    console.log(`before: ${foundTask.isDone}`);
                     foundTask.isDone = !foundTask.isDone;
                     foundTask.save();
-                    console.log(`after: ${foundTask.isDone}`);
-                    console.log('task patched');
+                    res.send('Task patched');
                 }
             });
 
