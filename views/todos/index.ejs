@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <% todos.forEach(todo => { %>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card border-dark">
+                <div class="card-header bg-warning">
+                    <%= todo.title %>
+                </div>
+                <ul class="list-group list-group-flush" data-todo_id="<%= todo._id %>">
+                    <% todo.tasks.forEach(task => { %>
+                        <% if (!task.isDone) { %>
+                            <li class="list-group-item" data-task_id="<%= task._id %>"><%= task.text %></li>
+                        <% } else { %>
+                            <li class="list-group-item done" data-task_id="<%= task._id %>"><%= task.text %></li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+
+                <form class="listEntry" action="/todos/<%= todo._id %>/tasks" method="POST">
+                    <input name="task[text]" class="textInput" type="text" placeholder="Add new list entry..."
+                        required />
+                </form>
+            </div>
+        </div>
+        <% }) %>
+        <div class="col-lg-3 col-md-4 col-sm-6 m-0">
+            <div class="card" style="height: 86px;">
+                <form action="/todos" method="POST">
+                    <div class="form-group m-0 ">
+                        <label for="name" class="sr-only">Title</label>
+                        <input style="height: 49px;" class="form-control" type="text" name="title" placeholder="Enter list title..."
+                            required />
+                    </div>
+
+                    <div class="form-group m-0">
+                        <button class="btn btn-md btn-block btn-success mb-0" style="height: 35px;">
+                            Add List
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/todos.js"></script>
+<%- include('../partials/footer') %>
