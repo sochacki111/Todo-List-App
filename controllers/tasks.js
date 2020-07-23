@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const Todo = require("../models/todo");
-const Task = require("../models/task");
+const mongoose = require('mongoose');
+const Todo = require('../models/todo');
+const Task = require('../models/task');
 
 exports.tasks_create_task = (req, res) => {
     Todo.findById(req.params.todo_id, (err, todo) => {
@@ -8,7 +8,7 @@ exports.tasks_create_task = (req, res) => {
             console.log(err);
             redirect('/todos');
         } else {
-            let task = {
+            const task = {
                 text: req.body.task.text,
                 isDone: false
             };

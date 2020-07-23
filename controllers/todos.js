@@ -16,10 +16,8 @@ exports.todos_get_all = (req, res) => {
 };
 
 exports.todos_create_todo = (req, res) => {
-    let title = req.body.title;
-
-    let newTodo = {
-        title: title,
+    const newTodo = {
+        title: req.body.title,
     };
 
     Todo.create(newTodo, (err, newTodo) => {

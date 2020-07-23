@@ -42,3 +42,8 @@ app.listen(PORT, () => {
         `TodoList server has started on port ${PORT}!`
     );
 });
+
+// TODO Add eslint
+// TODO Add Typescript
+// TODO Add pino for logging
+// TODO Add react 
