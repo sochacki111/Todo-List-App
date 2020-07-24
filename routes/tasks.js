@@ -1,6 +1,7 @@
 const express = require('express');
+
 const router = express.Router({
-    mergeParams: true
+  mergeParams: true
 });
 const TaskController = require('../controllers/tasks');
 
