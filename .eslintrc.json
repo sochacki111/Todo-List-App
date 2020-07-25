@@ -4,11 +4,13 @@
         "commonjs": true,
         "es2020": true
     },
-    "extends": ["airbnb-base", "prettier", "plugin:node/recommended"],
+    "extends": ["airbnb-base", "plugin:node/recommended"],
     "parserOptions": {
         "ecmaVersion": 11
     },
     "rules": {
-        "comma-dangle": ["error", "never"]
+        "comma-dangle": ["error", "never"],
+        "linebreak-style": "off",
+        "eol-last": "off"
     }
 }

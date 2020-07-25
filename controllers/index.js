@@ -1,3 +1,3 @@
-exports.landing_show = (req, res) => {
+exports.showLanding = (req, res) => {
   res.send('Landing page');
 };

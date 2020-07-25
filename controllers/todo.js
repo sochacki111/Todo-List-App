@@ -1,11 +1,12 @@
 const Todo = require('../models/todo');
+const logger = require('../middleware/logger');
 
-exports.todos_get_all = (req, res) => {
+exports.findAll = (req, res) => {
   Todo.find({})
     .populate('tasks')
     .exec((err, todos) => {
       if (err || !todos) {
-        console.log(err);
+        logger.error(err, 'todo.controller.findAll');
       } else {
         res.render('todos/index', {
           todos
@@ -14,16 +15,16 @@ exports.todos_get_all = (req, res) => {
     });
 };
 
-exports.todos_create_todo = (req, res) => {
+exports.create = (req, res) => {
   const newTodo = {
     title: req.body.title
   };
 
   Todo.create(newTodo, (err, newTodo) => {
     if (err) {
-      console.log(err);
+      logger.error(err, 'todo.controller.create');
     } else {
-      console.log(`Created: \n${newTodo}`);
+      logger.debug(`Todo created: ${newTodo}`);
     }
   });
   res.redirect('/todos');
