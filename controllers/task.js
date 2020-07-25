@@ -1,10 +1,11 @@
+const logger = require('../middleware/logger');
 const Todo = require('../models/todo');
 const Task = require('../models/task');
 
-exports.tasks_create_task = (req, res) => {
+exports.createTask = (req, res) => {
   Todo.findById(req.params.todo_id, (err, todo) => {
     if (err) {
-      console.log(err);
+      logger.error(err, 'task.controller.createTask.findById');
       redirect('/todos');
     } else {
       const task = {
@@ -13,7 +14,7 @@ exports.tasks_create_task = (req, res) => {
       };
       Task.create(task, (err, task) => {
         if (err) {
-          console.log(err);
+          logger.error(err, 'task.controller.createTask.findById.create');
         } else {
           task.save();
           todo.tasks.push(task);
@@ -25,7 +26,7 @@ exports.tasks_create_task = (req, res) => {
   });
 };
 
-exports.tasks_patch_task = (req, res) => {
+exports.patchTask = (req, res) => {
   Todo.findById(req.params.todo_id, (err, foundTodo) => {
     if (err || !foundTodo) {
       return res.redirect('/todos');
