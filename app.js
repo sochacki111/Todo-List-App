@@ -1,10 +1,9 @@
+require('dotenv').config({ path: '.env' });
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require('dotenv');
-
-dotenv.config({ path: '.env.example' });
 
 const logger = require('./middleware/logger');
 
@@ -54,5 +53,4 @@ app.listen(PORT, () => {
 // TODO Add Typescript
 // TODO Add pino for logging
 // TODO Add react
-// TODO Extract envs to .env
 // TODO Add async await for requests
