@@ -1,5 +1,5 @@
 const Todo = require('../models/todo');
-const logger = require('../middleware/logger');
+const logger = require('../middlewares/logger');
 
 exports.findAll = (req, res) => {
   Todo.find({})

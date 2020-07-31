@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const logger = require('./middleware/logger');
+const logger = require('./middlewares/logger');
 
 /**
  * Create Express server
@@ -49,8 +49,7 @@ app.listen(PORT, () => {
   logger.debug(`Server has started on port ${PORT}!`);
 });
 
-// TODO Add eslint
-// TODO Add Typescript
-// TODO Add pino for logging
-// TODO Add react
+// TODO Get to know about next()
 // TODO Add async await for requests
+// TODO Add Typescript
+// TODO Add react
