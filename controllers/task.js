@@ -1,46 +1,51 @@
-const logger = require('../middleware/logger');
+const logger = require('../middlewares/logger');
 const Todo = require('../models/todo');
 const Task = require('../models/task');
 
-exports.createTask = (req, res) => {
-  Todo.findById(req.params.todo_id, (err, todo) => {
-    if (err) {
-      logger.error(err, 'task.controller.createTask.findById');
-      redirect('/todos');
-    } else {
-      const task = {
-        text: req.body.task.text,
-        isDone: false
-      };
-      Task.create(task, (err, task) => {
-        if (err) {
-          logger.error(err, 'task.controller.createTask.findById.create');
-        } else {
-          task.save();
-          todo.tasks.push(task);
-          todo.save();
-          res.redirect('/todos');
-        }
-      });
-    }
-  });
+exports.createTask = async (req, res, next) => {
+  try {
+    const foundTodo = await Todo.findById(req.params.todo_id);
+
+    // eslint-disable-next-line node/no-unsupported-features/es-syntax
+    const newTask = {
+      text: req.body.task.text,
+      isDone: false
+    };
+
+    const createdTask = await Task.create(newTask);
+    createdTask.save();
+    logger.debug(`Created task: ${createdTask}`);
+
+    foundTodo.tasks.push(createdTask);
+    foundTodo.save();
+    logger.debug(`Task: ${createdTask} pushed to: ${foundTodo}`);
+
+    next();
+  } catch (err) {
+    logger.error(err, 'task.controller.createTask.findById');
+
+    next(err);
+  } finally {
+    res.redirect('/todos');
+  }
 };
 
-exports.patchTask = (req, res) => {
-  Todo.findById(req.params.todo_id, (err, foundTodo) => {
-    if (err || !foundTodo) {
-      return res.redirect('/todos');
+exports.patchTask = async (req, res, next) => {
+  try {
+    const foundTodo = await Todo.findById(req.params.todo_id);
+    if (foundTodo && foundTodo.tasks.includes(req.params.task_id)) {
+      const foundTask = await Task.findById(req.params.task_id);
+      foundTask.isDone = !foundTask.isDone;
+      foundTask.save();
+      res.send('Task patched');
+      logger.debug(`Task: ${foundTodo} patched`);
+
+      next();
     }
-    if (foundTodo.tasks.includes(req.params.task_id)) {
-      Task.findById(req.params.task_id, (err, foundTask) => {
-        if (err) {
-          res.redirect('/todos');
-        } else {
-          foundTask.isDone = !foundTask.isDone;
-          foundTask.save();
-          res.send('Task patched');
-        }
-      });
-    }
-  });
+  } catch (err) {
+    logger.error(err, 'task.controller.patchTask');
+    res.redirect('/todos');
+
+    next(err);
+  }
 };
