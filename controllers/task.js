@@ -4,7 +4,7 @@ const Task = require('../models/task');
 
 exports.createTask = async (req, res, next) => {
   try {
-    const todo = await Todo.findById(req.params.todo_id);
+    const foundTodo = await Todo.findById(req.params.todo_id);
 
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
     const newTask = {
@@ -12,17 +12,18 @@ exports.createTask = async (req, res, next) => {
       isDone: false
     };
 
-    const task = await Task.create(newTask);
-    task.save();
-    logger.debug(`Created task: ${task}`);
+    const createdTask = await Task.create(newTask);
+    createdTask.save();
+    logger.debug(`Created task: ${createdTask}`);
 
-    todo.tasks.push(task);
-    todo.save();
-    logger.debug(`Task: ${task} pushed to: ${todo}`);
+    foundTodo.tasks.push(createdTask);
+    foundTodo.save();
+    logger.debug(`Task: ${createdTask} pushed to: ${foundTodo}`);
 
     next();
   } catch (err) {
     logger.error(err, 'task.controller.createTask.findById');
+
     next(err);
   } finally {
     res.redirect('/todos');
@@ -38,11 +39,13 @@ exports.patchTask = async (req, res, next) => {
       foundTask.save();
       res.send('Task patched');
       logger.debug(`Task: ${foundTodo} patched`);
+
       next();
     }
   } catch (err) {
     logger.error(err, 'task.controller.patchTask');
-    next(err);
     res.redirect('/todos');
+
+    next(err);
   }
 };
