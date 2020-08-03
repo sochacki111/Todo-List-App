@@ -49,7 +49,6 @@ app.listen(PORT, () => {
   logger.debug(`Server has started on port ${PORT}!`);
 });
 
-// TODO Get to know about next()
-// TODO Add async await for requests
+// TODO Add unit tests
 // TODO Add Typescript
 // TODO Add react

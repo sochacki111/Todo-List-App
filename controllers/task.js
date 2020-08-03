@@ -7,12 +7,12 @@ exports.createTask = async (req, res, next) => {
     const todo = await Todo.findById(req.params.todo_id);
 
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
-    const taskDeserialized = {
+    const newTask = {
       text: req.body.task.text,
       isDone: false
     };
 
-    const task = await Task.create(taskDeserialized);
+    const task = await Task.create(newTask);
     task.save();
     logger.debug(`Created task: ${task}`);
 

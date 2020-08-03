@@ -15,17 +15,17 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res, next) => {
   const newTodo = {
     title: req.body.title
   };
 
-  Todo.create(newTodo, (err, newTodo) => {
-    if (err) {
-      logger.error(err, 'todo.controller.create');
-    } else {
-      logger.debug(`Todo created: ${newTodo}`);
-    }
-  });
-  res.redirect('/todos');
+  try {
+    const todo = await Todo.create(newTodo);
+    logger.debug(`Todo created: ${todo}`);
+  } catch (err) {
+    logger.error(err, 'todo.controller.create');
+  } finally {
+    res.redirect('/todos');
+  }
 };
