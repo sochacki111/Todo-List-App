@@ -37,7 +37,7 @@ exports.patchTask = async (req, res, next) => {
       const foundTask = await Task.findById(req.params.task_id);
       foundTask.isDone = !foundTask.isDone;
       foundTask.save();
-      res.send('Task patched');
+      res.send(foundTask);
       logger.debug(`Task: ${foundTodo} patched`);
 
       next();
