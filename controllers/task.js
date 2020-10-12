@@ -4,6 +4,8 @@ const Task = require('../models/task');
 
 exports.createTask = async (req, res, next) => {
   try {
+    // console.log('sdlfkjsd;gjd;flgndl;fkgjl;j');
+    console.log(req.body);
     const foundTodo = await Todo.findById(req.params.todo_id);
 
     // eslint-disable-next-line node/no-unsupported-features/es-syntax
@@ -38,7 +40,7 @@ exports.patchTask = async (req, res, next) => {
       foundTask.isDone = !foundTask.isDone;
       foundTask.save();
       res.send(foundTask);
-      logger.debug(`Task: ${foundTodo} patched`);
+      logger.debug(`Todo: ${foundTodo} Task: ${foundTask} patched`);
 
       next();
     }
