@@ -37,6 +37,8 @@ mongoose.connect(DATABASEURL, {
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
@@ -45,10 +47,8 @@ app.use('/', indexRoutes);
 app.use('/todos', todoRoutes);
 app.use('/todos/:todo_id/tasks', taskRoutes);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   logger.debug(`Server has started on port ${PORT}!`);
 });
 
-// TODO Add unit tests
-// TODO Add Typescript
-// TODO Add react
+module.exports = app;
